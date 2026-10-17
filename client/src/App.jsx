@@ -2,7 +2,10 @@ import { useEffect, useState } from "react";
 import Formulario from "./components/Formulario.jsx";
 import ListaTareas from "./components/ListaTareas.jsx";
 
-const API = "http://localhost:3001/api/tareas";
+const API_BASE = (
+  import.meta.env.VITE_API_URL || "http://localhost:3001/api"
+).replace(/\/+$/, "");
+const API = `${API_BASE}/tareas`;
 
 async function comprobarRespuesta(res, mensaje) {
   if (res.ok) return;
